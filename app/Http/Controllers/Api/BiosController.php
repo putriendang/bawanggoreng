@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Nama;
+use App\Models\Bios;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class NamaController extends Controller
+class BioController extends Controller
 {
     /**
      * 
@@ -21,13 +21,12 @@ class NamaController extends Controller
     public function index()
     {
 
-        $namapelanggan= Namapelanggan::all();
+        $bios = Bios::all();
 
         return response()->json([
             'success' => true,
-    
-            'message' => 'Daftar data teman',
-            'data' => $namapelanggan
+            'message' => 'Daftar Biodata',
+            'data' => $bios
         ], 200);
     }
 
@@ -39,32 +38,34 @@ class NamaController extends Controller
      */
     public function store(Request $request)
     {
-        /**$request->validate([
-            'nama_pelanggan' => 'required|unique:namapelanggan|max:255',
+        $request->validate([
+            'nama' => 'required|unique:bios|max:255',
             'no_tlp' => 'required|numeric',
-            'alamat' => 'required',
-        ]);*/
+            'tgl_lahir' => 'required',
+            'alamat' => 'required'
+        ]);
 
-        $namapelanggan = Namapelanggan::create([
-            'nama_pelanggan'=> $request->nama_pelanggan,
+        $bios = Bios::create([
+            'nama'=> $request->nama,
             'no_tlp' => $request->no_tlp,
+            'tgl_lahir' => $required->tgl_lahir,
             'alamat' => $request->alamat
             
 
             ]);
 
-            if($namapelanggan)
+            if($bios)
             {
                 return response()->json([
                     'success' => true,
-                    'message' => 'Pelanggan berhasil di tambahkan',
-                    'data' => $namapelanggan
+                    'message' => 'Biodata berhasil di tambahkan',
+                    'data' => $bios
                 ], 200);
             }else{
                 return response()->json([
                 'success' => false,
-                'message' => 'Pelangggan gagal di tambahkan',
-                'data' => $namapelanggan
+                'message' => 'Biodata gagal di tambahkan',
+                'data' => $bios
             ], 409);
             }
     }
@@ -77,22 +78,22 @@ class NamaController extends Controller
      */
     public function show($id)
     {
-                $namapelanggan = Namapelanggan ::where('id', $id)->first();
+                $bio = Bios::where('id', $id)->get();
 
                 return response()->json([
                     'success' => true,
-                    'message' => 'Detail data Pelanggan',
-                    'data' => $namapelanggan        
-                       ], 200);
+                    'message' => 'Detail data teman',
+                    'data' => $bio
+                ], 200);
     }
     public function edit($id)
     {
-                $namapelanggan = Namapelanggan::where('id', $id)->first();
+                $bio = Bios::where('id', $id)->first();
 
                 return response()->json([
                     'success' => true,
-                    'message' => 'Detail data pelanggan',
-                    'data' => $namapelanggan
+                    'message' => 'Detail data teman',
+                    'data' => $bio
                 ], 200);
     }
     /**
@@ -105,13 +106,15 @@ class NamaController extends Controller
     public function update(Request $request, $id)
     {
         /*$request->validate([
-            'nama_pelanggan' => 'required|unique:produk|max:255',
+            'nama' => 'required|unique:bios|max:255',
             'no_tlp' => 'required|numeric',
-            'alamat' => 'required',
+            'tgl_lahir' => 'required,
+            'alamat' => 'required'
         ]);*/
-        $f = Produk::find($id)->update([
-            'nama_pelanggan' => $request->nama_pelanggan,
+        $b = Bios::find($id)->update([
+            'nama' => $request->nama,
             'no_tlp' => $request->no_tlp,
+            'tgl_lahir' => $request->tgl_lahir,
             'alamat' => $request->alamat
             
         ]);
@@ -119,7 +122,7 @@ class NamaController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Post Updated',
-            'data' => $p
+            'data' => $b
         ], 200);
     }
 
@@ -131,7 +134,7 @@ class NamaController extends Controller
      */
     public function destroy($id)
     {
-        $cek = Namapelanggan::find($id)->delete();
+        $cek = Bios::find($id)->delete();
 
         return response()->json([
             'success' => true,

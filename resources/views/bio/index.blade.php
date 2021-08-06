@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Data Produk')
+@section('title', 'bio')
 
 @section('content')
 
@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Data Produk</title>
+    <title>Biodata</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
@@ -21,25 +21,27 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <a href="{{ route('produk.create') }}" class="btn btn-md btn-success mb-3">TAMBAH PRODUK</a>
+                        <a href="{{ route('bio.create') }}" class="btn btn-md btn-success mb-3">TAMBAH BIODATA</a>
                         <table class="table table-bordered">
                             <thead>
                               <tr>
-                                <th scope="col">Nama Produk</th>
-                                <th scope="col">Harga Produk</th>
-                                <th scope="col">Varia Rasa</th>
+                                <th scope="col">Nama Lengkap</th>
+                                <th scope="col">No Telepon</th>
+                                <th scope="col">Tanggal Lahir</th>
+                                <th scope="col">Alamat</th>
                                 <th scope="col">AKSI</th>
                               </tr>
                             </thead>
                             <tbody>
-                              @forelse ($produk as $produks)
+                              @forelse ($bio as $bios)
                                 <tr>
-                                    <td>{{ $produks->nama_produk }}</td>
-                                    <td>{{ $produks->harga_produk }}</td>
-                                    <td>{!! $produks->varian_rasa!!}</td>
+                                    <td>{{ $bios->nama}}</td>
+                                    <td>{{ $bios->no_tlp}}</td>
+                                    <td>{{ $bios->tgl_lahir}}</td>
+                                    <td>{!! $bios->alamat!!}</td>
                                     <td class="text-center">
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('produk.destroy', $produks->id) }}" method="POST">
-                                            <a href="{{ route('produk.edit', $produks->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('bio.destroy', $bios->id) }}" method="POST">
+                                            <a href="{{ route('bio.edit', $bios->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
@@ -48,17 +50,19 @@
                                 </tr>
                               @empty
                                   <div class="alert alert-danger">
-                                      Data Produk Belum Tersedia.
+                                      Data Belum Tersedia.
                                   </div>
                               @endforelse
                             </tbody>
                           </table>  
-                          {{ $produk->links() }}
+                          {{ $bio->links() }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Namapelanggan extends Migration
+class Bios extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class Namapelanggan extends Migration
      */
     public function up()
     {
-        Schema::create('namapelanggans', function (Blueprint $table) {
-        $table->id();
-        $table->string('nama_pelanggan');
-        $table->text('no_tlp');
-        $table->string('alamat');
-        $table->timestamps();
-    });
+        Schema::create('bios', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama');
+            $table->text('no_tlp');
+            $table->string('tgl_lahir');
+            $table->string('alamat');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -29,6 +30,6 @@ class Namapelanggan extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('namapelanggans');
+        Schema::dropIfExists('bios');
     }
 }

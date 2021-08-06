@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Namapelanggan extends Model
+class History extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'nama_pelanggan', 'no_tlp', 'alamat'
+        'nama', 'jenjangpendidikan', 'tgl_masuk', 'tgl_lulus'
     ];
+
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Namapelanggan;
+use App\Models\Bio;
 use Illuminate\Http\Request;
 
-class NamaController extends Controller
+class BioController extends Controller
 {
 	/**
 	* Display a listing of the resource.
@@ -14,8 +14,8 @@ class NamaController extends Controller
 	*/
 	public function index()
 	{
-	$namapelanggan = Namapelanggan::latest()->paginate(10);
-	return view('namapelanggan.index', compact('namapelanggan'));
+	$bio = Bio::latest()->paginate(10);
+	return view('bio.index', compact('bio'));
 	}
 	/**
 	* Show the form for creating a new resource.
@@ -24,7 +24,7 @@ class NamaController extends Controller
 	*/
 	public function create()
 	{
-	return view('namapelanggan.create');
+	return view('bio.create');
 	}
 	
 	/**
@@ -37,23 +37,25 @@ class NamaController extends Controller
 	{
 	$this->validate($request, [
 
-	'nama_pelanggan' => 'required',
+	'nama' => 'required',
 	'no_tlp' => 'required',
+	'tgl_lahir' => 'required',
 	'alamat' => 'required'
 	]);
 	
-	$namapelanggan = Namapelanggan::create([
-	'nama_pelanggan' => $request->nama_pelanggan,
+	$bio = Bio::create([
+	'nama' => $request->nama,
 	'no_tlp' => $request->no_tlp,
+	'tgl_lahir' => $request->tgl_lahir,
 	'alamat' => $request->alamat
 	]);
 	
-	if($namapelanggan){
+	if($bio){
 	//redirect dengan pesan sukses
-	return redirect()->route('namapelanggan.index')->with(['success' => 'Data Berhasil Disimpan!']);
+	return redirect()->route('bio.index')->with(['success' => 'Data Berhasil Disimpan!']);
 	}else{
 	//redirect dengan pesan error
-	return redirect()->route('namapelanggan.index')->with(['error' => 'Data Gagal Disimpan!']);
+	return redirect()->route('bio.index')->with(['error' => 'Data Gagal Disimpan!']);
 	}
 	}
 	
@@ -74,9 +76,9 @@ class NamaController extends Controller
 	* @param int $id
 	* @return \Illuminate\Http\Response
 	*/
-	public function edit(Namapelanggan $namapelanggan)
+	public function edit(bio $bio)
 	{
-	return view('namapelanggan.edit', compact('namapelanggan'));
+	return view('bio.edit', compact('bio'));
 	}
 	
 	/**
@@ -86,26 +88,28 @@ class NamaController extends Controller
 	* @param int $id
 	* @return \Illuminate\Http\Response
 	*/
-	public function update(Request $request, namapelanggan $namapelanggan)
+	public function update(Request $request, bio $bio)
 	{
 	$this->validate($request, [
-    'nama_pelanggan' => 'required',
-    'no_tlp' => 'required',
+    'nama' => 'required',
+	'no_tlp' => 'required',
+	'tgl_lahir' => 'required',
 	'alamat' => 'required'
 	]);
 	
-	$produk->update([
-    'nama_pelanggan' => $request->nama_pelanggan,
-    'no_tlp' => $request->no_tlp,
+	$bio->update([
+    'nama' => $request->nama,
+	'no_tlp' => $request->no_tlp,
+	'tgl_lahir' =>  $request->tgl_lahir,
     'alamat' =>$request->alamat
 	]);
 	
-	if($namapelanggan) {
+	if($bio) {
 	//redirect dengan pesan sukses
-	return redirect()->route('namapelanggan.index')->with(['success' => 'Data Berhasil Diupdate!']);
+	return redirect()->route('bio.index')->with(['success' => 'Data Berhasil Diupdate!']);
 	}else{
 	//redirect dengan pesan error
-	return redirect()->route('namapelanggan.index')->with(['error' => 'Data Gagal Diupdate!']);
+	return redirect()->route('bio.index')->with(['error' => 'Data Gagal Diupdate!']);
 	}
 	}
 	
@@ -118,14 +122,14 @@ class NamaController extends Controller
 	public function destroy($id)
 	{
 	
-	$namapelanggan = Namapelanggan::findOrFail($id);
+	$bio = Bio::findOrFail($id);
 	
-	if($namapelanggan){
+	if($bio){
 	//redirect dengan pesan sukses
-	return redirect()->route('namapelanggan.index')->with(['success' => 'Data Berhasil Dihapus!']);
+	return redirect()->route('bio.index')->with(['success' => 'Data Berhasil Dihapus!']);
 	}else{
 	//redirect dengan pesan error
-	return redirect()->route('namapelanggan.index')->with(['error' => 'Data Gagal Dihapus!']);
+	return redirect()->route('bio.index')->with(['error' => 'Data Gagal Dihapus!']);
 	}
     }
 }

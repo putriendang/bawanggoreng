@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Produk extends Migration
+class Histories extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class Produk extends Migration
      */
     public function up()
     {
-        Schema::create('produks', function (Blueprint $table) {
+        Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_produk');
-            $table->text('harga_produk');
-            $table->string('varian_rasa');
+            $table->string('nama');
+            $table->text('jenjangpendidikan');
+            $table->string('tgl_masuk');
+            $table->string('tgl_lulus');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class Produk extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produks');
+        Schema::dropIfExists('histories');
     }
 }

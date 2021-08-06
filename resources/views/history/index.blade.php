@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Data Pelanggan')
+@section('title', 'Data Pendidikan')
 
 @section('content')
 
@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Data Pelanggan</title>
+    <title>Data Pendidikan</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
@@ -21,25 +21,27 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <a href="{{ route('namapelanggan.create') }}" class="btn btn-md btn-success mb-3">TAMBAH PELANGGAN</a>
+                        <a href="{{ route('history.create') }}" class="btn btn-md btn-success mb-3">TAMBAH PENDIDIKAN</a>
                         <table class="table table-bordered">
                             <thead>
                               <tr>
-                                <th scope="col">Nama Pelanggan</th>
-                                <th scope="col">No Telepon</th>
-                                <th scope="col">Alamat</th>
+                                <th scope="col">Nama Lengkap</th>
+                                <th scope="col">Jenjang Pendidikan</th>
+                                <th scope="col">Tanggal Masuk</th>
+                                <th scope="col">Tanggal Lulus</th>
                                 <th scope="col">AKSI</th>
                               </tr>
                             </thead>
                             <tbody>
-                              @forelse ($namapelanggan as $namapelanggans)
+                              @forelse ($history as $historys)
                                 <tr>
-                                    <td>{{ $namapelanggans->nama_pelanggan }}</td>
-                                    <td>{{ $namapelanggans->no_tlp}}</td>
-                                    <td>{!! $namapelanggans->alamat!!}</td>
+                                    <td>{{ $historys->nama }}</td>
+                                    <td>{{ $historys->jenjangpendidikan }}</td>
+                                    <td>{!! $historys->tgl_masuk!!}</td>
+                                    <td>{!! $historys->tgl_lulus!!}</td>
                                     <td class="text-center">
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('namapelanggan.destroy', $namapelanggans->id) }}" method="POST">
-                                            <a href="{{ route('namapelanggan.edit', $namapelanggans->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('history.destroy', $historys->id) }}" method="POST">
+                                            <a href="{{ route('history.edit', $historys->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
@@ -48,19 +50,17 @@
                                 </tr>
                               @empty
                                   <div class="alert alert-danger">
-                                      Data Pelanggan Belum Tersedia.
+                                      Data history Belum Tersedia.
                                   </div>
                               @endforelse
                             </tbody>
                           </table>  
-                          {{ $namapelanggan->links() }}
+                          {{ $history->links() }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

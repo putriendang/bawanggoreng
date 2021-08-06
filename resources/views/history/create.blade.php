@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Data Produk')
+@section('title', 'Tambah Data Pendidikan')
 
 @section('content')
 
@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tambah Data Produk </title>
+    <title>Tambah Data Pendidikan </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body style="background: lightgray">
@@ -20,16 +20,16 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <form action="{{ route('produk.store') }}" method="POST">
+                        <form action="{{ route('history.store') }}" method="POST">
                         
                             @csrf
 
                             <div class="form-group">
-                                <label class="font-weight-bold">Nama Produk</label>
-                                <input type="text" class="form-control @error('nama_produk') is-invalid @enderror" name="nama_produk" value="{{ old('nama_produk') }}">
+                                <label class="font-weight-bold">Nama Lengkap</label>
+                                <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}">
                             
-                                <!-- error message untuk nama produk -->
-                                @error('nama_produk')
+                                <!-- error message untuk nama -->
+                                @error('nama')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -37,22 +37,33 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">Harga Produk</label>
-                                <input type="text" class="form-control @error('harga_produk') is-invalid @enderror" name="harga_produk" value="{{ old('harga_produk') }}">
+                                <label class="font-weight-bold">Jenjang Pendidikan</label>
+                                <input type="text" class="form-control @error('jenjangpendidikan') is-invalid @enderror" name="jenjangpendidikan" value="{{ old('jenjangpendidikan') }}">
                             
-                                <!-- error message untuk harga -->
-                                @error('harga_produk')
+                                <!-- error message untuk jenjangpendidikan -->
+                                @error('jenjangpendidikan')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="font-weight-bold">Varian Rasa</label>
-                                <input type="text" class="form-control @error('varian_rasa') is-invalid @enderror" name="varian_rasa" value="{{ old('varian_rasa') }}" >
+                                <label class="font-weight-bold">Tanggal Masuk</label>
+                                <input type="date" class="form-control @error('tgl_masuk') is-invalid @enderror" name="tgl_masuk" value="{{ old('tgl_masuk') }}" >
                             
-                                <!-- error message untuk harga -->
-                                @error('varian_rasa')
+                                <!-- error message untuk tgl_masuk -->
+                                @error('tgl_masuk')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                </div>
+                            <div class="form-group">
+                                <label class="font-weight-bold">Tanggal Lulus</label>
+                                <input type="date" class="form-control @error('tgl_lulus') is-invalid @enderror" name="tgl_lulus" value="{{ old('tgl_lulus') }}" >
+                            
+                                <!-- error message untuk tgl_lulus -->
+                                @error('tgl_lulus')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>

@@ -13,15 +13,18 @@
   <body>
      <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-    <a class="navbar-brand" href="#">Mamah Rosi</a>
+    <a class="navbar-brand" href="#">BIODATA</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-        <a class="nav-link active" href="/">Produk <span class="sr-only">(current)</span></a>
-        <a class="nav-link" href="/namapelanggan">Nama Pelanggan</a>
-        <a class="nav-link" href="/groups">Ukuran</a>
+        <a class="nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/bio">Profil</a>
+        <a class="nav-link" href="/history">History Pendidikan</a>
+        <a class="nav-link" href="/groups">Usaha</a>
+        <a class="nav-link" href="/namapelanggan">Contact Me</a>
+
         </div>
     </div>
     </nav>

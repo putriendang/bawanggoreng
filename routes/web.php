@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\NamaController;
+use App\Http\Controllers\BioController;
+use App\Http\Controllers\HistoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,10 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('', [ProdukController::class, 'index']);
-
+Route::get('', [BioController::class, 'index']);
 Route::resources([
-    'produk' => ProdukController::class,
-    'namapelanggan' => NamaController::class,
+    'bio' => BioController::class,
+    'history' => HistoryController::class,
 
 ]);

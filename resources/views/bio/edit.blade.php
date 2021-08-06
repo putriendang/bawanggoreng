@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Data Produk')
+@section('title', 'Edit Biodata')
 
 @section('content')
 
@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Data Produk</title>
+    <title>Edit Biodata</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body style="background: lightgray">
@@ -20,39 +20,49 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <form action="{{ route('produk.update', $produk->id) }}" method="POST">
+                        <form action="{{ route('bio.update', $bio->id) }}" method="POST">
                             @csrf
                             @method('PUT')
 
                             <div class="form-group">
-                                <label class="font-weight-bold">Nama Produk</label>
-                                <input type="text" class="form-control @error('nama_produk') is-invalid @enderror" name="nama_produk" value="{{ old('nama_produk', $produk->nama_produk) }}" placeholder="Masukkan nama_produk">
+                                <label class="font-weight-bold">Nama Lengkap</label>
+                                <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama', $nama->nama) }}" placeholder="Masukkan nama">
                             
-                                <!-- error message untuk nama_produk -->
-                                @error('nama_produk')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label class="font-weight-bold">Harga Produk</label>
-                                <input type="text" class="form-control @error('harga_produk') is-invalid @enderror" name="harga_produk" value="{{ old('harga_produk', $produk->harga_produk) }}" placeholder="Masukkan harga_produk">
-                            
-                                <!-- error message untuk harga_produk -->
-                                @error('harga_produk')
+                                <!-- error message untuk nama -->
+                                @error('Nama')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="font-weight-bold">Varian Rasa</label>
-                                <input type="text" class="form-control @error('varian_rasa') is-invalid @enderror" name="varian_rasa" value="{{ old('varian_rasa', $produk->varian_rasa) }}" placeholder="Masukkan varian_rasa ">
+                                <label class="font-weight-bold">No Telepon</label>
+                                <input type="text" class="form-control @error('no_tlp') is-invalid @enderror" name="no_tlp" value="{{ old('no_tlp', $namapelanggan->no_tlp) }}" placeholder="Masukkan no_tlp">
                             
-                                <!-- error message untuk varian_rasa -->
-                                @error('varian_rasa')
+                                <!-- error message untuk no_tlp -->
+                                @error('no_tlp')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-bold">Tanggal Lahir</label>
+                                <input type="text" class="form-control @error('tgl_lahir') is-invalid @enderror" name="tgl_lahir" value="{{ old('tgl_lahir', $namapelanggan->tgl_lahir) }}" placeholder="Masukkan tgl_lahir">
+                            
+                                <!-- error message untuk tgl_lahir -->
+                                @error('tgl_lahir')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-bold">Alamat Lengkap</label>
+                                <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat', $namapelanggan->alamat) }}" placeholder="Masukkan alamat ">
+                            
+                                <!-- error message untuk alamat -->
+                                @error('alamat')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
